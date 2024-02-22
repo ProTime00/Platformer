@@ -13,7 +13,7 @@ namespace Platformer.Scripts
         private float _timeCount = 400 * 50;
         public Camera cam;
 
-        private void Update()
+        private void FixedUpdate()
         {
             if (_timeCount <= 0)
             {
