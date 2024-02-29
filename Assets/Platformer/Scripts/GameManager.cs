@@ -9,9 +9,17 @@ namespace Platformer.Scripts
     {
         public Text time;
         public Text coins;
+        public Text score;
         private int _coinsCount;
+        public int scoreInt;
         private float _timeCount = 400 * 50;
         public Camera cam;
+        public static GameManager gameManager;
+
+        private void Awake()
+        {
+            gameManager = this;
+        }
 
         private void FixedUpdate()
         {
@@ -52,6 +60,15 @@ namespace Platformer.Scripts
             else if(gameObjectRaycasted.name is "Question(Clone)")
             {
                 _coinsCount += 1;
+                scoreInt += 100;
+                score.text = "Score\n";
+                score.text += scoreInt switch
+                {
+                    < 1000 => "000" + scoreInt,
+                    < 10000 => "00" + scoreInt,
+                    < 100000 => "0" + scoreInt,
+                    _ => score.text
+                };
                 coins.text = _coinsCount.ToString();
             }
         }

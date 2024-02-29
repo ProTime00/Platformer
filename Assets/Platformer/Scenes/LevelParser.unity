@@ -312,6 +312,7 @@ MonoBehaviour:
   environmentRoot: {fileID: 727678647}
   waterPrefab: {fileID: 7917562154073401451, guid: 168e2a72b3c8848d8a2394b9eaa1326d, type: 3}
   goldPrefab: {fileID: 1925014106562301748, guid: 29f4aca2998344fcc91c4ef52fe84d27, type: 3}
+  level: 0
 --- !u!1 &546966462
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +600,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -674,7 +676,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.790005, y: 7.1799994, z: -10}
+  m_LocalPosition: {x: 12.59, y: 16.61, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -692,6 +694,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beeb801aaaf1a4921928ded372f76faa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21174a407a504ab0b58a9931b7b6660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mario: {fileID: 1296416328}
 --- !u!1 &1296416328 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ab9acd5763b7843258e837a17dc10656, type: 3}
@@ -709,7 +724,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272e6f886e9ce4809924f112569d42c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 25
+  jumpForce: 20
 --- !u!136 &1296416330
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -832,7 +847,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'MARIO
 
-    000100'
+    000000'
 --- !u!222 &1376982695
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -855,7 +870,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ab9acd5763b7843258e837a17dc10656, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.15
+      value: 12.57
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ab9acd5763b7843258e837a17dc10656, type: 3}
       propertyPath: m_LocalPosition.z
@@ -893,7 +908,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mario
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3360943095811224909, guid: ab9acd5763b7843258e837a17dc10656, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 19.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: ab9acd5763b7843258e837a17dc10656, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3fcbdf29583f7474baa5ba0de798ae74, type: 2}
+    - target: {fileID: 5866666021909216657, guid: ab9acd5763b7843258e837a17dc10656, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: ab9acd5763b7843258e837a17dc10656, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -938,6 +966,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: {fileID: 1629025930}
   coins: {fileID: 712676353}
+  score: {fileID: 1376982694}
+  scoreInt: 0
   cam: {fileID: 963194227}
 --- !u!4 &1522701400
 Transform:
@@ -1094,7 +1124,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'TIME
 
-    000
+    400
 
 '
 --- !u!222 &1629025931
