@@ -1,36 +1,30 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class LevelParser : MonoBehaviour
 {
-    public string filename;
+    private readonly string[] _filename = {"Level1", "Level2"};
     public GameObject rockPrefab;
     public GameObject brickPrefab;
     public GameObject questionBoxPrefab;
     public GameObject stonePrefab;
     public Transform environmentRoot;
+    public GameObject waterPrefab;
+    public GameObject goldPrefab;
+    public int level;
 
     // --------------------------------------------------------------------------
     void Start()
     {
-        LoadLevel();
+        LoadLevel(level);
     }
 
     // --------------------------------------------------------------------------
-    void Update()
+    private void LoadLevel(int levelToLoad)
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ReloadLevel();
-        }
-    }
-
-    // --------------------------------------------------------------------------
-    private void LoadLevel()
-    {
-        string fileToParse = $"{Application.dataPath}{"/Resources/"}{filename}.txt";
-        Debug.Log($"Loading level file: {fileToParse}");
+        string fileToParse = $"{Application.dataPath}{"/Resources/"}{_filename[levelToLoad]}.txt";
 
         Stack<string> levelRows = new Stack<string>();
 
@@ -76,6 +70,12 @@ public class LevelParser : MonoBehaviour
                     case 's':
                         block = stonePrefab;
                         break;
+                    case 'w':
+                        block = waterPrefab;
+                        break;
+                    case 'g':
+                        block = goldPrefab;
+                        break;
                 }
 
                 if (block is not null)
@@ -86,15 +86,5 @@ public class LevelParser : MonoBehaviour
 
             row++;
         }
-    }
-
-    // --------------------------------------------------------------------------
-    private void ReloadLevel()
-    {
-        foreach (Transform child in environmentRoot)
-        {
-           Destroy(child.gameObject);
-        }
-        LoadLevel();
     }
 }

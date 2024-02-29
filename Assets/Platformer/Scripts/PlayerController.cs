@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace Platformer.Scripts
 {
@@ -72,6 +73,19 @@ namespace Platformer.Scripts
             var rotation = transform.rotation;
             rotation.eulerAngles = new Vector3(0f, yap * 90, 0f);
             transform.rotation = rotation;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Water"))
+            {
+                SceneManager.LoadScene("LevelParser");
+            }
+
+            if (other.CompareTag("Finish"))
+            {
+                SceneManager.LoadScene("LevelParser2");
+            }
         }
     }
 }
